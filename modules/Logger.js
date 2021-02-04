@@ -7,27 +7,27 @@ exports.log = (content, type = "log") => {
 
   switch (type) {
     case "log": {
-        fs.appendFile('log', `${timestamp} \[${type.toUpperCase()}\] ${content}\n`, (err) => {if(err) {console.log(err)}})
+        fs.appendFile('log.txt', `${timestamp} \[${type.toUpperCase()}\] ${content}\n`, (err) => {if(err) {console.log(err)}})
       return console.log(`${timestamp} ${chalk.bgBlue(type.toUpperCase())} ${content} `);
     }
     case "warn": {
-        fs.appendFile('log', `${timestamp} \[${type.toUpperCase()}\] ${content}\n`, (err) => {if(err) {console.log(err)}})
+        fs.appendFile('log.txt', `${timestamp} \[${type.toUpperCase()}\] ${content}\n`, (err) => {if(err) {console.log(err)}})
       return console.log(`${timestamp} ${chalk.black.bgYellow(type.toUpperCase())} ${content} `);
     }
     case "error": {
-       fs.appendFile('log', `${timestamp} \[${type.toUpperCase()}\] ${content}\n`, (err) => {if(err) {console.log(err)}})
+       fs.appendFile('log.txt', `${timestamp} \[${type.toUpperCase()}\] ${content}\n`, (err) => {if(err) {console.log(err)}})
       return console.log(`${timestamp} ${chalk.bgRed(type.toUpperCase())} ${content} `);
     }
     case "debug": {
-        fs.appendFile('log', `${timestamp} \[${type.toUpperCase()}\] ${content}\n`, (err) => {if(err) {console.log(err)}})
+        fs.appendFile('log.txt', `${timestamp} \[${type.toUpperCase()}\] ${content}\n`, (err) => {if(err) {console.log(err)}})
       return console.log(`${timestamp} ${chalk.green(type.toUpperCase())} ${content} `);
     }
     case "cmd": {
-       fs.appendFile('log', `${timestamp} \[${type.toUpperCase()}\] ${content}\n`, (err) => {if(err) {console.log(err)}})
+       fs.appendFile('log.txt', `${timestamp} \[${type.toUpperCase()}\] ${content}\n`, (err) => {if(err) {console.log(err)}})
       return console.log(`${timestamp} ${chalk.black.bgWhite(type.toUpperCase())} ${content}`);
     }
     case "ready": {
-       fs.appendFile('log', `${timestamp} \[${type.toUpperCase()}\] ${content}\n`, (err) => {if(err) {console.log(err)}})
+       fs.appendFile('log.txt', `${timestamp} \[${type.toUpperCase()}\] ${content}\n`, (err) => {if(err) {console.log(err)}})
       return console.log(`${timestamp} ${chalk.black.bgGreen(type.toUpperCase())} ${content}`);
     }
     default: throw new TypeError("Logger type must be either warn, debug, log, ready, cmd or error.");
