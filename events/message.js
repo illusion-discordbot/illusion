@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const cooldowns = new Discord.Collection();
 const mongoose = require("mongoose");
 const Guild = require('../models/guild');
+const axios = require('axios');
 
 module.exports = async (client, message) => {
 
@@ -26,25 +27,20 @@ module.exports = async (client, message) => {
         }
 	});
 
-	const contentTypes = ['application/json', 'text/plain', 'text/yaml', 'text/javascript', ];
-	const axios = require('axios');
-	const mimeType = require('mime-types');
-	const hastebin = require("hastebin-gen");
+	const contentTypes = ['application/json', 'text/plain', 'text/yaml', 'text/javascript', 'application/pdf', 'application/javascript', 'text/x-python' ];
 
-
-	if (!message.attachments) return;
+	if (message.attachments) {
     for (const attachment of message.attachments.values()) {
-		let contentType = mimeType.lookup(attachment.url);
-		if (!contentTypes.some(type => contentType === type)) continue;
+		const data = await axios.get(attachment.url);
+		if (!contentTypes.some(type => data.headers['content-type'] === type)) continue;
 
 		try {
-			const { data } = await axios.get(attachment.url);
-			const haste = await hastebin(data, { url: "https://paste.illusionbot.xyz"} );
+			const haste = await axios.post('https://paste.illusionbot.xyz/documents', data.data)
 	
           await message.channel.send(new Discord.MessageEmbed()
           .setTitle(`Pasted!`)
-          .setURL(haste)
-          .setDescription(`Hi there, It seems you have put a file in the chat, I went ahead and uploaded \`${attachment.name}\` for ya :) Make sure to do this in the future so I dont have too! Click the blue text above to see the paste. `)
+          .setURL(`https://paste.illusionbot.xyz/${haste.data.key}`)
+          .setDescription(`Hi there, It seems you have put a file in the chat, I went ahead and uploaded \`${attachment.name}\` for ya :) Make sure to do this in the future so I don't have too! Click the blue text above to see the paste.`)
           .setColor(process.env.EMBED_COLOR)
           .setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
           )
@@ -54,12 +50,12 @@ module.exports = async (client, message) => {
 		  await message.channel.send(new Discord.MessageEmbed()
           .setTitle(`Could not paste :(`)
           .setURL("https://paste.illusionbot.xyz/")
-          .setDescription(`I was having trouble putting your file on hastebin, If you would like to do it manually thatd be awesome! You can use a paste service like [this one](https://paste.illusionbot.xyz/) or any other one!  `)
+          .setDescription(`I was having trouble putting your file on hastebin, If you would like to do it manually that would be awesome! You can use a paste service like [this one](https://paste.illusionbot.xyz/) or any other one!`)
           .setColor(process.env.EMBED_ERROR_COLOR)
           .setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
           )
 		}
-	  }
+	  }}
 
 
 	
