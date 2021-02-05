@@ -32,6 +32,5 @@ fs.readdir('./events/', (err, files) => {
 	client.logger.log(`Loading ${files.length} events.`);
 });
 
-
 client.mongoose.init();
 client.login(process.env.TOKEN);
