@@ -10,8 +10,6 @@ module.exports = {
     usage: '[user] (reason)',
 	execute(client, message, args) {
             if(!message.mentions.members.first()) {
-                //message.channel.send('you needa give me some1 to kick lol xD kid get rekt');
-                //return; 
                 return message.reply(new Discord.MessageEmbed()
                     .setTitle(`You need to mention someone!`)
                     .setColor(process.env.EMBED_ERROR_COLOR)
@@ -20,8 +18,6 @@ module.exports = {
             }; 
 
                 if(!message.mentions.members.first().kickable) {
-                    //message.channel.send('so i tried to kick them lol and it just didnt work, I dont have perms not gib perms');
-                    //return
                     return message.reply(new Discord.MessageEmbed()
                     .setTitle(`I can\'t kick this member!`)
                     .setDescription(`Make Sure I have permissions to kick this member.`)
@@ -46,10 +42,7 @@ module.exports = {
                 .catch(err => message.channel.send(`I was unable to message this member!`));
 
                 setTimeout(() => {
-
-                    // message.mentions.members.first().kick({reason: kickReason})
-                    
-                    message.mentions.members.first().kick()
+                    message.mentions.members.first().kick(kickReason)
                     .then(message.channel.send(new Discord.MessageEmbed()
                     .setTitle(`I have succesfully kicked ${message.mentions.members.first().user.username}#${message.mentions.members.first().user.discriminator}`)
                     .setDescription(`**Reason: ** ${kickReason}`)
