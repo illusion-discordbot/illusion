@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const cooldowns = new Discord.Collection();
 const mongoose = require("mongoose");
 const Guild = require('../models/guild');
+
 module.exports = async (client, message) => {
 
     const settings = await Guild.findOne({
