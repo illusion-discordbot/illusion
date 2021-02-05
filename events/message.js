@@ -61,11 +61,6 @@ module.exports = async (client, message) => {
 		}
 	  }
 
-	  
-const interactions = require("discord-slash-commands-client");
-client.interactions = new interactions.Client(process.env.TOKEN, "755935266471936050");
-
-
 
 	
 
