@@ -27,7 +27,7 @@ module.exports = async (client, message) => {
         }
 	});
 
-	const contentTypes = ['application/json', 'text/plain', 'text/yaml', 'text/javascript', 'application/pdf', 'application/javascript', 'text/x-python' ];
+	const contentTypes = ['application/json', 'text/plain', 'text/yaml', 'text/javascript', 'application/javascript', 'text/x-python' ];
 
 	if (message.attachments) {
     for (const attachment of message.attachments.values()) {
