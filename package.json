@@ -3,12 +3,17 @@
   "version": "3.0.0",
   "description": "A multipurpose discord bot",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
     "lint": "eslint ."
   },
-  "author": "N0ahMC, ElijahRus",
+  "author": "Illusion Developers",
+  "contributors": [
+    "N0ahMC <noah@n0ahmc.com>",
+    "ElijahRus <t@t.com>"
+  ],
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
