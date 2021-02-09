@@ -14,7 +14,7 @@
     "N0ahMC <noah@n0ahmc.com>",
     "ElijahRus <t@t.com>"
   ],
-  "license": "ISC",
+  "license": "Unlicense",
   "dependencies": {
     "axios": "^0.21.1",
     "canvas": "^2.6.1",
