@@ -15,7 +15,7 @@ module.exports = {
                     .setColor(process.env.EMBED_ERROR_COLOR)
                     .setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
                     )
-            }; 
+            }
 
                 if(!message.mentions.members.first().kickable) {
                     return message.reply(new Discord.MessageEmbed()
@@ -38,7 +38,7 @@ module.exports = {
                 .setColor(process.env.EMBED_COLOR)
                 .setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
                 )
-                .catch(err => message.channel.send(`I was unable to message this member!`));
+                .catch(_err => message.channel.send(`I was unable to message this member!`));
 
                 setTimeout(() => {
                     message.mentions.members.first().kick(kickReason)
