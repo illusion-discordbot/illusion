@@ -72,7 +72,6 @@ module.exports = async (client, message) => {
 
 	// guildOnly: true/false,
 	if (command.guildOnly && message.channel.type === 'dm') {
-		//return message.reply('I can\'t execute that command inside DMs!');
 		return message.reply(new Discord.MessageEmbed()
 			.setTitle(`I can\'t execute that command inside DMs!`)
 			.setColor(process.env.EMBED_COLOR)
@@ -92,7 +91,6 @@ module.exports = async (client, message) => {
 	if (command.permissions) {
 		const authorPerms = message.channel.permissionsFor(message.author);
 		if (!authorPerms || !authorPerms.has(command.permissions)) {
-			//return message.reply('You can not do this!');
 			return message.reply(new Discord.MessageEmbed()
 			.setTitle(`You need ${command.permissions} permissions to do this.`)
 			.setColor(process.env.EMBED_ERROR_COLOR)
@@ -102,9 +100,7 @@ module.exports = async (client, message) => {
 	}
 
 	if (command.args && !args.length) {
-		//let reply = `You didn't provide any arguments, ${message.author}!`;
 		if (command.usage) {
-			// reply += `\nThe proper usage would be: \`${fetchprefix.prefix}${command.name} ${command.usage}\``;
 			return message.reply(new Discord.MessageEmbed()
 			.setTitle(`Missing Args`)
 			.setDescription(`You didn't provide any arguments, ${message.author}!\nThe proper usage would be: \`${settings.prefix}${command.name} ${command.usage}\``)
@@ -133,7 +129,6 @@ module.exports = async (client, message) => {
 
 		if (now < expirationTime) {
 			const timeLeft = (expirationTime - now) / 1000;
-			// return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
 			return message.reply(new Discord.MessageEmbed()
 			.setTitle(`Cooldown`)
 			.setDescription(`${message.author}, please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`)
