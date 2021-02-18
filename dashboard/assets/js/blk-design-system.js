@@ -173,7 +173,7 @@ function debounce(func, wait, immediate) {
     }, wait);
     if (immediate && !timeout) func.apply(context, args);
   };
-};
+}
 
 $(document).on('click', '.navbar-toggler', function() {
   $toggle = $(this);
@@ -310,4 +310,4 @@ function debounce(func, wait, immediate) {
     }, wait);
     if (immediate && !timeout) func.apply(context, args);
   };
-};
+}
