@@ -1,4 +1,3 @@
-require('dotenv')
 const client = require('discord.js');
 const { GiveawaysManager } = require('discord-giveaways');
 const { Database } = require('quickmongo');
