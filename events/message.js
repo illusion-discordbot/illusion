@@ -1,4 +1,3 @@
-
 const Discord = require('discord.js');
 const cooldowns = new Discord.Collection();
 const mongoose = require("mongoose");
@@ -7,25 +6,17 @@ const axios = require('axios');
 
 module.exports = async (client, message) => {
 
-    const settings = await Guild.findOne({
-        guildID: message.guild.id
-    }, (err, guild) => {
-        if (err) console.error(err)
-        if (!guild) {
-            const newGuild = new Guild({
-                _id: mongoose.Types.ObjectId(),
-                guildID: message.guild.id,
-                guildName: message.guild.name,
-                prefix: '-'
-            })
-
-            newGuild.save()
-            .then(result => console.log(result))
-            .catch(err => console.error(err));
-
-            return true
-        }
-	});
+	var settings = await Guild.findOne({ guildID: message.guild.id });
+  	if (!settings) {
+    const newSettings = new Guild({
+		_id: mongoose.Types.ObjectId(),
+        guildID: message.guild.id,
+        guildName: message.guild.name,
+        prefix: '-'
+    });
+    await newSettings.save().catch(()=>{});
+    settings = await Guild.findOne({ guildID: message.guild.id });
+  }
 
 	const contentTypes = ['application/json', 'text/plain', 'text/yaml', 'text/javascript', 'application/javascript', 'text/x-python' ];
 
