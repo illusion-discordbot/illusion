@@ -13,5 +13,5 @@ module.exports = async client => {
   
     // Make the bot "play the game" which is the help command with default prefix.
     client.user.setActivity(`-help`, {type: "PLAYING"});
-    if(process.env.DASHBOARD_ENABLED === true){Dashboard(client)}
+    if(process.env.DASHBOARD_ENABLED === "true"){Dashboard(client)}
   };
