@@ -196,5 +196,9 @@ module.exports = async (client) => {
         renderTemplate(res, req, "settings.ejs", { guild, settings: settings, alert: "Your settings have been saved." });
     });
 
+    /*app.get("*", (req, res) => {
+      renderTemplate(res, req, "404.ejs");
+    })*/
+
   app.listen(process.env.DASHBOARD_PORT, null, null, () => client.logger.log(`Dashboard is up and running on port ${process.env.DASHBOARD_PORT}.`))
 };
