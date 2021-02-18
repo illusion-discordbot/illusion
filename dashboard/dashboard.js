@@ -9,7 +9,6 @@ const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const Discord = require("discord.js");
 const mongoose = require("mongoose");
-const GuildSettings = require("../models/settings");
 const Guild = require('../models/guild');
 
 // We instantiate express app and the session store.
