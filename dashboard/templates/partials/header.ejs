@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title><%= title %> | Illusion</title>
+    <link rel="shortcut icon" href="../../assets/img/BotLogo.png" />
+      <!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+<link href="../../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link type="text/css" href="../../assets/css/blk-design-system.min.css" rel="stylesheet" />
+</head>
+<body class="index-page">
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="100">
+          <div class="container">
+              <div class="navbar-translate">
+              <a class="navbar-brand"><img src="../../assets/img/BotLogo.png" alt="Bot Logo"  width="50" height="50"></a>
+            <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-bar bar1"></span>
+              <span class="navbar-toggler-bar bar2"></span>
+              <span class="navbar-toggler-bar bar3"></span>
+            </button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <div class="navbar-collapse-header">
+                <div class="row">
+                  <div class="col-6 collapse-brand">
+                    <a class="navbar-brand"><img src="../../assets/img/BotLogo.png" alt="Bot Logo"  width="50" height="50"></a>
+                  </div>
+                  <div class="col-6 collapse-close text-right">
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                      <i class="tim-icons icon-simple-remove"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <ul class="navbar-nav">
+                <li class="nav-item p-0">
+                  <a class="nav-link" href="http://95.217.235.85:6969/">Home</a>
+                </li>
+                <li class="nav-item p-0">
+                  <a class="nav-link" href="https://docs.illusionbot.xyz/">Docs</a>
+                </li>
+                <li class="nav-item p-0">
+                  <a class="nav-link" href="https://discord.com/invite/wjqTBhM">Support Server</a>
+                </li>
+                <li class="nav-item p-0">
+                  <a class="nav-link" href="http://95.217.235.85:6969/dashboard">Dashboard</a>
+                </li>
+              </ul>
+              <ul class="navbar-nav ml-auto">
+                <% if (user) { %>
+                  <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                      <div>
+                        <img class="photo" src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>" alt="Profile Photo">
+                      </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-navbar">
+                      <!--<li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
+                      <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
+                      <li class="dropdown-divider"></li>-->
+                      <li class="nav-link disabled"><a href="#" class="nav-item dropdown-item"><%= user.username %>#<%= user.discriminator %></a></li>
+                      <li class="dropdown-divider"></li>
+                     <!-- <li class="nav-link disabled"><a href="#" class="nav-item dropdown-item">Dashboard</a></li>-->
+                      <li class="nav-link"><a href="/logout" class="nav-item dropdown-item">Log out</a></li>
+                    </ul>
+                  </li>
+                 <% } else { %>
+                  <li class="nav-item">
+                    <a class="nav-link btn btn-primary btn-round d-none d-lg-block" href="/login">
+                      <i class="tim-icons icon-single-02"></i> Login
+                    </a>
+                  </li>
+                  <!--<button type="button" class="btn btn-primary" href="/login">Login</button>-->
+                  <!--<a class="btn btn-primary" href="/login">Button</a>-->
+                  
+                <% } %>
+                <li class="separator d-lg-none"></li>
+              </ul>
+            </div>
+          
+          </div>
+        </nav>
+        <!-- End Navbar -->
+<!--
+        <% if (user) { %>
+          <img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>">
+          <p>Logged in as <%= user.username %>#<%= user.discriminator %> <%= user.avatarURL %>.</p>
+          <li href="/logout">Logout</li>
+        <% } else { %>
+          <li type="button" href="/login">Login</li><br>
+        <% } %>
+        <% if(user && title === "Home") { %>
+          <li type="button" href="/dashboard">Back to dashboard</li><br>
+        <% } %>
+        <%- title === "Dashboard" ? "" : "<hr>" %>
+
+        -->
