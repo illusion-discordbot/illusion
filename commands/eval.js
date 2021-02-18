@@ -5,7 +5,6 @@ const clean = text => {
     else
         return text;
   }
-require('dotenv').config()
 logger = require("../modules/Logger");
 module.exports = {
 	name: 'eval',

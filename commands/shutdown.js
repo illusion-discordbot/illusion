@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-require('dotenv').config();
 logger = require("../modules/Logger");
 module.exports = {
 	name: 'shutdown',

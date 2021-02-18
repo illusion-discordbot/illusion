@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 logger = require("./Logger");
-require('dotenv')
 
 module.exports = {
     init: () => {
