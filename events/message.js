@@ -5,7 +5,7 @@ const Guild = require('../models/guild');
 const axios = require('axios');
 
 module.exports = async (client, message) => {
-
+if(message.channel.type === 'text') {
 	var settings = await Guild.findOne({ guildID: message.guild.id });
   	if (!settings) {
     const newSettings = new Guild({
@@ -16,7 +16,12 @@ module.exports = async (client, message) => {
     });
     await newSettings.save().catch(()=>{});
     settings = await Guild.findOne({ guildID: message.guild.id });
-  }
+	}
+	prefix = settings.prefix
+}
+if(message.channel.type === 'dm') {
+	prefix = '-'
+}
 
 	const contentTypes = ['application/json', 'text/plain', 'text/yaml', 'text/javascript', 'application/javascript', 'text/x-python' ];
 
@@ -51,9 +56,9 @@ module.exports = async (client, message) => {
 
 	
 
-	if (!message.content.startsWith(settings.prefix) || message.author.bot) return;
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-	const args = message.content.slice(settings.prefix.length).trim().split(/ +/);
+	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
 
 	const command = client.commands.get(commandName)
@@ -94,7 +99,7 @@ module.exports = async (client, message) => {
 		if (command.usage) {
 			return message.reply(new Discord.MessageEmbed()
 			.setTitle(`Missing Args`)
-			.setDescription(`You didn't provide any arguments, ${message.author}!\nThe proper usage would be: \`${settings.prefix}${command.name} ${command.usage}\``)
+			.setDescription(`You didn't provide any arguments, ${message.author}!\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``)
 			.setColor(process.env.EMBED_ERROR_COLOR)
 			.setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
 			)
