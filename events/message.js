@@ -71,7 +71,7 @@ module.exports = async (client, message) => {
 	}
 
 	// ownerOnly: true/false,
-	if (command.ownerOnly && message.author.id !== process.env.OWNER && message.author.id !== process.env.OWNER2) {
+	if (command.category === "owner" && message.author.id !== process.env.OWNER && message.author.id !== process.env.OWNER2) {
 		return message.reply(new Discord.MessageEmbed()
 			.setTitle(`You don\'t have permission to run this command`)
 			.setColor(process.env.EMBED_ERROR_COLOR)
