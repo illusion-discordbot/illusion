@@ -3,9 +3,10 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'paste',
 	description: 'Upload your message to HasteBin!',
-    cooldown: 5,
-    args: true,
-    usage: '[Message]',
+  category: '',
+  cooldown: 5,
+  args: true,
+  usage: '[Message]',
 	async execute(client, message, args){
         let text = args.join(" ")
         await axios.post('https://paste.illusionbot.xyz/documents', text)

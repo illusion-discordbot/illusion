@@ -9,6 +9,7 @@ logger = require("../modules/Logger");
 module.exports = {
 	name: 'eval',
 	description: '',
+  category: '',
   args: true,
   ownerOnly: true,
 	execute(client, message, args) {

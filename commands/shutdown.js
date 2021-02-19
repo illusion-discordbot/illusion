@@ -3,6 +3,7 @@ logger = require("../modules/Logger");
 module.exports = {
 	name: 'shutdown',
   description: 'stops the bot',
+  category: '',
   ownerOnly: true,
 	execute(client, message, args) {
     logger.log(`The shut down command was used by ${message.author.username}, shutting down now!`)
