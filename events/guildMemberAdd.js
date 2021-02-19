@@ -23,29 +23,29 @@ module.exports = async (client, member) => {
     var textString3 = `${member.user.username}`;
     //if the text is too big then smaller the text
     if (textString3.length >= 14) {
-      ctx.font = 'bold 100px Genta';
+      ctx.font = 'bold 100px Sans';
       ctx.fillStyle = '#f2f2f2';
       ctx.fillText(textString3, 720, canvas.height / 2 + 20);
     }
     //else dont do it
     else {
-      ctx.font = 'bold 150px Genta';
+      ctx.font = 'bold 150px Sans';
       ctx.fillStyle = '#f2f2f2';
       ctx.fillText(textString3, 720, canvas.height / 2 + 20);
     }
     //define the Discriminator Tag
     var textString2 = `#${member.user.discriminator}`;
-    ctx.font = 'bold 40px Genta';
+    ctx.font = 'bold 40px Sans';
     ctx.fillStyle = '#f2f2f2';
     ctx.fillText(textString2, 730, canvas.height / 2 + 58);
     //define the Member count
     var textString4 = `Member #${member.guild.memberCount}`;
-    ctx.font = 'bold 60px Genta';
+    ctx.font = 'bold 60px Sans';
     ctx.fillStyle = '#f2f2f2';
     ctx.fillText(textString4, 750, canvas.height / 2 + 125);
     //get the Guild Name
     var textString4 = `${member.guild.name}`;
-    ctx.font = 'bold 60px Genta';
+    ctx.font = 'bold 60px Sans';
     ctx.fillStyle = '#f2f2f2';
     ctx.fillText(textString4, 700, canvas.height / 2 - 150);
     //create a circular "mask"
@@ -70,5 +70,8 @@ module.exports = async (client, member) => {
       .setImage("attachment://welcome-image.png")
       .attachFiles(attachment);
     //send the welcome embed to there
+    if(settings.welcomeRoleID) {
+      member.roles.add(settings.welcomeRoleID)
+    }
     member.guild.channels.cache.get(settings.welcomeChannelID).send(welcomeembed)
 };
