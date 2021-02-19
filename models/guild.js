@@ -6,7 +6,8 @@ const guildSchema = mongoose.Schema({
     guildName: String,
     prefix: String,
     logChannelID: String,
-    welcomeChannelID: String
+    welcomeChannelID: String,
+    welcomeRoleID: String
 });
 
 module.exports = mongoose.model('Guild', guildSchema, 'guilds');

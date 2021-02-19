@@ -44,6 +44,19 @@
                     <option style="background-color:#171941;" value="<%= channel.id %>">#<%= channel.name %></option>
                     <% }}); %> 
                   </select>
+                  <!-- Welcome Role -->
+                  <label for="<%= settings.welcomeRoleID %>">Welcome Role</label>
+                  <select type="text" class="form-control" id="<%= settings.welcomeRoleID %>" name="welcomeRoleID" value="<%= settings.welcomeRoleID %>" placeholder="Enter welcomeRoleID">
+                    <option style="background-color:#171941;" value="">-- select an option --</option>
+                    <% guild.roles.cache.forEach(role => {
+                      if(role.rawPosition === 0) return;
+                      if(role.id === settings.welcomeRoleID){
+                    %>
+                    <option style="background-color:#171941;" selected value="<%= role.id %>">@<%= role.name %></option>
+                    <% } else { %> 
+                    <option style="background-color:#171941;" value="<%= role.id %>">@<%= role.name %></option>
+                    <% }}); %> 
+                  </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Save Settings</button>
               </form>
