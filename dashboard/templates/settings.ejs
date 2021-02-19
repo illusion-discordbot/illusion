@@ -1,25 +1,21 @@
 <%- include("partials/header", { bot, user, path, title: "Home" }) %>
-
- <% if (alert) { %>
-  <p><%= alert %></p><br>
-<% } %>
-
-<!--<h1><%= guild.name %></h1>
-<form style="margin-top: 1em;" method="POST"> <!-- method="post" triggers a POST request to the same url with the body of the form control inputs 
-  <p>Prefix:</p>
-  <input type="text" name="prefix" value="<%= settings.prefix %>" placeholder="Your prefix."><br><br>
-  <button type="submit">Save Settings</button>
-</form>  -->
-<div class="card">
-  <h4 class="card-title"><%= guild.name %></h4>
-  <div class="card-body">
-    <form method="POST">
-      <div class="form-group">
-        <label for="<%= settings.prefix %>">Prefix</label>
-        <input type="text" class="form-control" id="<%= settings.prefix %>" name="prefix" value="<%= settings.prefix %>" placeholder="Enter prefix">
-      </div>
-      <button type="submit" class="btn btn-primary">Save Settings</button>
-    </form>
+<div class="wrapper">
+  <div class="page-header">
+    <div class="content">
+      <div class="container">
+          <div class="card">
+            <h4 class="card-title"><%= guild.name %></h4>
+            <div class="card-body">
+              <form method="POST">
+                <div class="form-group">
+                  <label for="<%= settings.prefix %>">Prefix</label>
+                  <input type="text" class="form-control" id="<%= settings.prefix %>" name="prefix" value="<%= settings.prefix %>" placeholder="Enter prefix">
+                </div>
+                <button type="submit" class="btn btn-primary">Save Settings</button>
+              </form>
+            </div>
+        </div>
+      </div> 
   </div>
 </div>
 <%- include("partials/footer") %>
