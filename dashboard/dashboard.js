@@ -68,6 +68,13 @@ module.exports = async (client) => {
   const assetsDir = path.resolve(`${dataDir}${path.sep}assets`);
   app.use('/assets', express.static(assetsDir))
 
+  app.use((req, res, next) => {
+    if (!req.user) {discUser = ""}
+    if (req.user) {discUser = `(${req.user.username}#${req.user.discriminator} / ${req.user.id}) `}
+    client.logger.cmd(`[DASHBOARD] ${req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for'] || req.socket.remoteAddress} ${discUser}made ${req.method} request to ${req.url}.`);
+    next();
+  })
+
   // We declare a renderTemplate function to make rendering of a template in a route as easy as possible.
   const renderTemplate = (res, req, template, data = {}) => {
     // Default base data which passed to the ejs template by default. 
@@ -198,7 +205,6 @@ module.exports = async (client) => {
         // We render the template with an alert text which confirms that settings have been saved.
         renderTemplate(res, req, "settings.ejs", { guild, settings: settings, alert: "Your settings have been saved." });
     });
-
     /*app.get("*", (req, res) => {
       renderTemplate(res, req, "404.ejs");
     })*/
