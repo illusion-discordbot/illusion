@@ -189,6 +189,8 @@ module.exports = async (client) => {
       
         // We set the prefix of the server settings to the one that was sent in request from the form.
         settings.prefix = req.body.prefix;
+        settings.logChannelID = req.body.logChannelID;
+        settings.welcomeChannelID = req.body.welcomeChannelID;
         // We save the settings.
         await settings.save().catch(() => {});
 
