@@ -114,9 +114,9 @@ module.exports = async (client) => {
     if (req.session.backURL) {
       const url = req.session.backURL;
       req.session.backURL = null;
-      res.redirect("/dashboard");
+      res.redirect(url);
     } else {
-      res.redirect("/dashboard");
+      res.redirect("/");
     }
   });
 
