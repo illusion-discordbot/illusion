@@ -12,14 +12,17 @@ process.on("unhandledRejection", err => {client.logger.error(`Unhandled rejectio
 client.commands = new Discord.Collection();
 client.mongoose = require('./modules/mongoose');
 
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-client.logger.log(`Loading ${commandFiles.length} commands.`);
-
-for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	client.commands.set(command.name, command);
+let commandLength = 0
+const commandFolders = fs.readdirSync('./commands');
+for (const folder of commandFolders) {
+	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
+	for (const file of commandFiles) {
+        commandLength += 1
+		const command = require(`./commands/${folder}/${file}`);
+		client.commands.set(command.name, command);
+	}
 }
-
+client.logger.log(`Loading ${commandLength} commands.`);
 // Event
 fs.readdir('./events/', (err, files) => {
     if (err) return console.error;
