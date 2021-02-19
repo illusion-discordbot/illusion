@@ -7,6 +7,6 @@ module.exports = async (client, guild) => {
     Guild.findOneAndDelete({
         guildID: guild.id
     }, (err, res) => {
-        if(err) console.error(err)
+        if(err) client.logger.error(err)
     });
 };

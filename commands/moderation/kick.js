@@ -48,7 +48,7 @@ module.exports = {
                     .setColor(process.env.EMBED_COLOR)
                     .setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
                     ))
-                .catch(console.error);
+                .catch(client.logger.error);
             }, 750); 
 
             

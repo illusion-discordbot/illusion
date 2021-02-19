@@ -6,7 +6,7 @@ module.exports = async (client, message) => {
     const settings = await Guild.findOne({
         guildID: message.guild.id
     }, (err, guild) => {
-        if (err) console.error(err)
+        if (err) client.logger.error(err)
     });
     if (!settings.logChannelID) {return true}
     message.guild.channels.cache.get(settings.logChannelID).send(new Discord.MessageEmbed()

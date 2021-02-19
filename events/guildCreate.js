@@ -12,5 +12,5 @@ module.exports = async (client, guild) => {
 
     guild.save()
     //.then(result => )
-    .catch(err => console.error(err));
+    .catch(err => client.logger.error(err));
 };

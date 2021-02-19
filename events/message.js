@@ -37,7 +37,7 @@ module.exports = async (client, message) => {
           )
 
 		} catch (e) {
-			console.log(e)
+			client.logger.error(e)
 		  await message.channel.send(new Discord.MessageEmbed()
           .setTitle(`Could not paste :(`)
           .setURL("https://paste.illusionbot.xyz/")

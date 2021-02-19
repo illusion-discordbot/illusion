@@ -7,7 +7,7 @@ module.exports = async (client, member) => {
     const settings = await Guild.findOne({
         guildID: member.guild.id
     }, (err, guild) => {
-        if (err) console.error(err)
+        if (err) client.logger.error(err)
     });
     if (!settings.welcomeChannelID) {return true}
     //create a new Canvas

@@ -21,7 +21,7 @@ module.exports = {
     message.delete()
           })
           .catch(function (error) {
-            console.log(error);
+            client.logger.error(error);
           });
 
 	},

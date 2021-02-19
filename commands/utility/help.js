@@ -28,7 +28,7 @@ module.exports = {
                     )
                 })
                 .catch(error => {
-                    console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
+                    client.logger.error(`Could not send help DM to ${message.author.tag}.\n`, error);
                     message.reply(new Discord.MessageEmbed()
                     .setTitle(`Unable to send DM!`)
                     .setDescription('There was an error trying to DM you, Do you have your DMs Locked?')

@@ -25,7 +25,7 @@ for (const folder of commandFolders) {
 client.logger.log(`Loading ${commandLength} commands.`);
 // Event
 fs.readdir('./events/', (err, files) => {
-    if (err) return console.error;
+    if (err) return client.logger.error;
     files.forEach(file => {
         if (!file.endsWith('.js')) return;
         const evt = require(`./events/${file}`);
