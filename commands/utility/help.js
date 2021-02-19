@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'help',
 	description: 'List all of my commands or info about a specific command.',
-    category: '',
+    category: 'utility',
 	aliases: ['commands'],
 	usage: '[help name]',
 	cooldown: 5,

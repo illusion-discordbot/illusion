@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
     name: 'serverinfo',
     description: 'Displays server information',
-    category: '',
+    category: 'utility',
     cooldown: 5,
     execute(client, message, args) {
     message.channel.send(new Discord.MessageEmbed()

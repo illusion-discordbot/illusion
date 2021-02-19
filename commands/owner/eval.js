@@ -5,13 +5,12 @@ const clean = text => {
     else
         return text;
   }
-logger = require("../modules/Logger");
+logger = require("../../modules/Logger");
 module.exports = {
 	name: 'eval',
 	description: '',
-  category: '',
+  category: 'owner',
   args: true,
-  ownerOnly: true,
 	execute(client, message, args) {
 		if(message.author.id !== process.env.OWNER && message.author.id !== process.env.OWNER2) {
       return message.reply(new Discord.MessageEmbed()

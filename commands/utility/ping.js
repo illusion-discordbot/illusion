@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'ping',
 	description: 'Ping!',
-    category: '',
+    category: 'utility',
 	cooldown: 5,
 	execute(client, message, args) {
         message.channel.send(new Discord.MessageEmbed()

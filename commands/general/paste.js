@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'paste',
 	description: 'Upload your message to HasteBin!',
-  category: '',
+  category: 'general',
   cooldown: 5,
   args: true,
   usage: '[Message]',
