@@ -1,5 +1,5 @@
 <%- include("partials/header", { bot, user, path, title: "Dashboard" }) %>
-
+<div class="wrapper">
 <% user.guilds.forEach(guild => {
     const permsOnGuild = new perms(guild.permissions);
     if(!permsOnGuild.has("MANAGE_GUILD")) return;
@@ -17,4 +17,5 @@
     <a href="<%= `https://discordapp.com/oauth2/authorize?client_id=${bot.user.id}&scope=bot&guild_id=${guild.id}&response_type=code&redirect_uri=${encodeURIComponent(`${process.env.DASHBOARD_DOMAIN}${process.env.DASHBOARD_PORT == 80 ? "" : `:${process.env.DASHBOARD_PORT}`}/callback`)}` %>">Add Bot</a>
   <% } %>
   <% }); %> 
+</div>
 <%- include("partials/footer") %>
