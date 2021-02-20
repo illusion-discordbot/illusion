@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 module.exports = {
 	name: 'kick',
-	description: 'kek user',
+	description: 'Kick users',
     category: 'moderation',
     cooldown: 5,
     args: true,
