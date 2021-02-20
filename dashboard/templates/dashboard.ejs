@@ -1,21 +1,38 @@
 <%- include("partials/header", { bot, user, path, title: "Dashboard" }) %>
 <div class="wrapper">
-<% user.guilds.forEach(guild => {
-    const permsOnGuild = new perms(guild.permissions);
-    if(!permsOnGuild.has("MANAGE_GUILD")) return;
-  %>
-  <hr>
-  <% if (!guild.icon) { %>
-<img src="https://preview.redd.it/nx4jf8ry1fy51.gif?format=png8&s=a5d51e9aa6b4776ca94ebe30c9bb7a5aaaa265a6" width="128" height="128">
-    <% } else { %>
-  <img class="photo" src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>">
-  <% } %>
-  <p><%= guild.name %></p>
-  <% if (bot.guilds.cache.get(guild.id)) { %>
-    <a href="/dashboard/<%= guild.id %>">Edit Settings</a>
-  <% } else { %>
-    <a href="<%= `https://discordapp.com/oauth2/authorize?client_id=${bot.user.id}&scope=bot&guild_id=${guild.id}&response_type=code&redirect_uri=${encodeURIComponent(`${process.env.DASHBOARD_DOMAIN}${process.env.DASHBOARD_PORT == 80 ? "" : `:${process.env.DASHBOARD_PORT}`}/callback`)}` %>">Add Bot</a>
-  <% } %>
-  <% }); %> 
+  <div class="page-header">
+    <div class="content">
+      <div class="container">
+  <table class="table">
+    <tbody>
+      <% user.guilds.forEach(guild => {
+        const permsOnGuild = new perms(guild.permissions);
+        if(!permsOnGuild.has("MANAGE_GUILD")) return;
+      %>
+        <tr>
+            <td></td>
+            <% if (!guild.icon) { %>
+            <td><img class="img-fluid rounded-circle shadow" src="https://preview.redd.it/nx4jf8ry1fy51.gif?format=png8&s=a5d51e9aa6b4776ca94ebe30c9bb7a5aaaa265a6" width="50" height="50"></td>
+            <% } else { %>
+            <td><img class="img-fluid rounded-circle shadow" src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>" width="50" height="50"></td>
+            <% } %>
+            <td><%= guild.name %></td>
+            <td></td>
+            <td></td>
+            <% if (bot.guilds.cache.get(guild.id)) { %>
+            <td class="td-actions text-right">
+                <a class="btn btn-primary btn-sm" href="/dashboard/<%= guild.id %>">Edit Settings</a>
+            </td>
+            <% } else { %>
+            <td class="td-actions text-right">
+              <a class="btn btn-default btn-sm" href="<%= `https://discordapp.com/oauth2/authorize?client_id=${bot.user.id}&scope=bot&guild_id=${guild.id}&response_type=code&redirect_uri=${encodeURIComponent(`${process.env.DASHBOARD_DOMAIN}${process.env.DASHBOARD_PORT == 80 ? "" : `:${process.env.DASHBOARD_PORT}`}/callback`)}` %>">Add Bot</a>
+            </td>
+            <% } %>
+        </tr>
+        <% }); %> 
+    </tbody>
+</table></div>
+    </div>
+  </div>
 </div>
 <%- include("partials/footer") %>
