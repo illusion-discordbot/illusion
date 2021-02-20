@@ -41,14 +41,14 @@ module.exports = {
                 .catch(_err => message.channel.send(`I was unable to message this member!`));
 
                 setTimeout(() => {
-                    message.mentions.members.first().kick(kickReason)
+                    message.mentions.members.first().kick(`Reason: ${kickReason}, Mod: ${message.author.tag}`)
                     .then(message.channel.send(new Discord.MessageEmbed()
                     .setTitle(`I have succesfully kicked ${message.mentions.members.first().user.username}#${message.mentions.members.first().user.discriminator}`)
-                    .setDescription(`**Reason: ** ${kickReason}`)
+                    .setDescription(`**Reason:** ${kickReason}`)
                     .setColor(process.env.EMBED_COLOR)
                     .setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
                     ))
-                .catch(client.logger.error);
+                .catch(err => client.logger.error(err));
             }, 750); 
 
             
