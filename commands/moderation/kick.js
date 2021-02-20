@@ -34,7 +34,7 @@ module.exports = {
 
                 message.mentions.members.first().send(new Discord.MessageEmbed()
                 .setTitle(`You have been kicked from ${message.guild.name}!`)
-                .setDescription(`**Moderator:** ${message.author.username}\n**Reason:** ${kickReason} `)
+                .setDescription(`**Moderator:** ${message.author.tag}\n**Reason:** ${kickReason} `)
                 .setColor(process.env.EMBED_COLOR)
                 .setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
                 )
@@ -43,7 +43,7 @@ module.exports = {
                 setTimeout(() => {
                     message.mentions.members.first().kick(`Reason: ${kickReason}, Mod: ${message.author.tag}`)
                     .then(message.channel.send(new Discord.MessageEmbed()
-                    .setTitle(`I have succesfully kicked ${message.mentions.members.first().user.username}#${message.mentions.members.first().user.discriminator}`)
+                    .setTitle(`I have successfully kicked ${message.mentions.members.first().user.tag}`)
                     .setDescription(`**Reason:** ${kickReason}`)
                     .setColor(process.env.EMBED_COLOR)
                     .setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
