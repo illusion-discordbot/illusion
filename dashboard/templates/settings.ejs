@@ -57,6 +57,19 @@
                     <option style="background-color:#171941;" value="<%= role.id %>">@<%= role.name %></option>
                     <% }}); %> 
                   </select>
+                  <!-- Suggestion Channel -->
+                  <label for="<%= settings.suggestionChannelID %>">Suggestion Channel</label>
+                  <select type="text" class="form-control" id="<%= settings.suggestionChannelID %>" name="suggestionChannelID" value="<%= settings.suggestionChannelID %>" placeholder="Enter suggestionChannelID">
+                    <option style="background-color:#171941;" value="">-- select an option --</option>
+                    <% guild.channels.cache.forEach(channel => {
+                      if(channel.type !== 'text') return; 
+                      if(channel.id === settings.suggestionChannelID){
+                    %>
+                    <option style="background-color:#171941;" selected value="<%= channel.id %>">#<%= channel.name %></option>
+                    <% } else { %> 
+                    <option style="background-color:#171941;" value="<%= channel.id %>">#<%= channel.name %></option>
+                    <% }}); %> 
+                  </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Save Settings</button>
               </form>

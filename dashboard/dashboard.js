@@ -199,6 +199,7 @@ module.exports = async (client) => {
         settings.logChannelID = req.body.logChannelID;
         settings.welcomeChannelID = req.body.welcomeChannelID;
         settings.welcomeRoleID = req.body.welcomeRoleID;
+        settings.suggestionChannelID = req.body.suggestionChannelID;
         // We save the settings.
         await settings.save().catch(() => {});
 
