@@ -10,9 +10,36 @@ module.exports = {
 	cooldown: 5,
 	execute(client, message, args) {
         const data = [];
+        const help = [];
         const { commands } = message.client;
 
         if (!args.length) {
+                help.push('**General Commands:**\n')
+                commands.forEach(command => {
+                    if (command.category === "owner") return;
+                    if (command.category !== "general") return;
+                    help.push(`\`${command.name}\`,`)
+                })
+                help.push('\n**Moderation Commands:**\n')
+                commands.forEach(command => {
+                    if (command.category === "owner") return;
+                    if (command.category !== "moderation") return;
+                    help.push(`\`${command.name}\`,`)
+                })
+                help.push('\n**Utility Commands:**\n')
+                commands.forEach(command => {
+                    if (command.category === "owner") return;
+                    if (command.category !== "utility") return;
+                    help.push(`\`${command.name}\`,`)
+                })
+
+            return message.reply(new Discord.MessageEmbed()
+                .setTitle(`Illusion Commands!`)
+                .setDescription(help.join(' '))
+                .setThumbnail("https://illusionbot.xyz/assets/img/BotLogo.png")
+                .setColor(process.env.EMBED_COLOR)
+                .setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
+            )/*
             data.push('Here\'s a list of all my commands:');
             data.push(commands.map(command => command.name).join(', '));
             data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
@@ -35,7 +62,7 @@ module.exports = {
                     .setColor(process.env.EMBED_ERROR_COLOR)
                     .setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
                     )
-                });
+                }); */
         }
         const name = args[0].toLowerCase();
         const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
