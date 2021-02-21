@@ -28,7 +28,15 @@ module.exports = {
                 )
 		}
 
-		message.channel.bulkDelete(amount, true).catch(err => {
+		message.channel.bulkDelete(amount, true)
+        .then(messages =>
+            message.channel.send(new Discord.MessageEmbed()
+                .setTitle(`Deleted ${messages.size} messages`)
+                .setColor(process.env.EMBED_ERROR_COLOR)
+                .setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
+                )
+          )
+        .catch(err => {
 			client.logger.error(err);
             message.channel.send(new Discord.MessageEmbed()
                 .setTitle(`Error!`)
