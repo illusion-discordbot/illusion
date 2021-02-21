@@ -17,14 +17,14 @@ module.exports = {
                     )
             }
 
-               /* if(!message.mentions.members.first().kickable) {
+                if(!message.mentions.members.first().bannable) {
                     return message.reply(new Discord.MessageEmbed()
-                    .setTitle(`I can't kick this member!`)
-                    .setDescription(`Make Sure I have permissions to kick this member.`)
+                    .setTitle(`I can't ban this member!`)
+                    .setDescription(`Make Sure I have permissions to ban this member.`)
                     .setColor(process.env.EMBED_ERROR_COLOR)
                     .setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
                     )
-                }*/
+                }
 
                 let banReason = args.slice(1).join(' ')
                 if (!banReason) {
