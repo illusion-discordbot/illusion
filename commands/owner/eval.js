@@ -1,11 +1,6 @@
 const Discord = require('discord.js');
 const clean = text => {
-    if (typeof(text) === "string") {
-      return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-    }
-    else {
-        return text;
-    }
+    return typeof(text) === "string" ? text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203)) : text;
   }
 module.exports = {
 	name: 'eval',
