@@ -8,7 +8,7 @@ module.exports = {
     guildOnly: true,
     args: true,
     usage: '[Suggestion]',
-	    async execute(client, message, args){
+        async execute(client, message, args){
         const settings = await Guild.findOne({
             guildID: message.guild.id
         }, (err, guild) => {

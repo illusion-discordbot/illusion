@@ -8,8 +8,8 @@ module.exports = async (client, message) => {
 	let prefix
 if(message.channel.type === 'text') {
 	var settings = await Guild.findOne({ guildID: message.guild.id });
-  	if (!settings) {
-    const newSettings = new Guild({
+	if (!settings) {
+	const newSettings = new Guild({
 		_id: mongoose.Types.ObjectId(),
         guildID: message.guild.id,
         guildName: message.guild.name,
@@ -44,15 +44,15 @@ if(message.channel.type === 'dm') {
 
 		} catch (e) {
 			client.logger.error(e)
-		  await message.channel.send(new Discord.MessageEmbed()
-          .setTitle(`Could not paste :(`)
-          .setURL("https://paste.illusionbot.xyz/")
-          .setDescription(`I was having trouble putting your file on hastebin, If you would like to do it manually that would be awesome! You can use a paste service like [this one](https://paste.illusionbot.xyz/) or any other one!`)
-          .setColor(process.env.EMBED_ERROR_COLOR)
-          .setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
-          )
+			await message.channel.send(new Discord.MessageEmbed()
+				.setTitle(`Could not paste :(`)
+				.setURL("https://paste.illusionbot.xyz/")
+				.setDescription(`I was having trouble putting your file on hastebin, If you would like to do it manually that would be awesome! You can use a paste service like [this one](https://paste.illusionbot.xyz/) or any other one!`)
+				.setColor(process.env.EMBED_ERROR_COLOR)
+				.setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
+        	)
 		}
-	  }}
+	}}
 
 
 	
