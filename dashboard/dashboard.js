@@ -1,5 +1,4 @@
 // We import modules.
-const url = require("url");
 const path = require("path");
 const express = require("express");
 const passport = require("passport");
@@ -103,7 +102,7 @@ module.exports = async (client) => {
     if (req.session.backURL) {
       req.session.backURL = req.session.backURL; // eslint-disable-line no-self-assign
     } else if (req.headers.referer) {
-      const parsed = url.parse(req.headers.referer);
+      const parsed = new URL(req.headers.referer);
       if (parsed.hostname === app.locals.domain) {
         req.session.backURL = parsed.path;
       }
