@@ -50,7 +50,7 @@ if(message.channel.type === 'dm') {
 				.setDescription(`I was having trouble putting your file on hastebin, If you would like to do it manually that would be awesome! You can use a paste service like [this one](https://paste.illusionbot.xyz/) or any other one!`)
 				.setColor(process.env.EMBED_ERROR_COLOR)
 				.setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
-        	)
+			)
 		}
 	}}
 
