@@ -7,7 +7,6 @@ const clean = text => {
         return text;
     }
   }
-logger = require("../../modules/Logger");
 module.exports = {
 	name: 'eval',
 	description: '',
@@ -22,7 +21,7 @@ module.exports = {
 			)
     }
 
-    logger.log(`The eval command was used by ${message.author.username}!`)
+    client.logger.log(`The eval command was used by ${message.author.username}!`)
     try {
       const code = args.join(" ");
       let evaled = eval(code);
