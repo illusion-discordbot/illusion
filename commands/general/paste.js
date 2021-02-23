@@ -8,7 +8,7 @@ module.exports = {
   args: true,
   usage: '[Message]',
 	async execute(client, message, args){
-        let text = args.join(" ")
+        const text = args.join(" ")
         await axios.post('https://paste.illusionbot.xyz/documents', text)
           .then(function (response) {
             message.channel.send(new Discord.MessageEmbed()

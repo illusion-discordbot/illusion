@@ -23,7 +23,7 @@ module.exports = {
             
        )
         }
-        let msg = await message.guild.channels.cache.get(settings.suggestionChannelID).send(new Discord.MessageEmbed()
+        const msg = await message.guild.channels.cache.get(settings.suggestionChannelID).send(new Discord.MessageEmbed()
              .setAuthor(`New Suggestion from ${message.author.tag}!`, message.author.avatarURL())
              .setDescription(args.join(" "))
              .setTimestamp()
