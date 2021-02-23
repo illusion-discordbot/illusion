@@ -44,10 +44,10 @@ module.exports = async (client, member) => {
     ctx.fillStyle = '#f2f2f2';
     ctx.fillText(textString4, 750, canvas.height / 2 + 125);
     //get the Guild Name
-    var textString4 = `${member.guild.name}`;
+    var textString5 = `${member.guild.name}`;
     ctx.font = 'bold 60px Sans';
     ctx.fillStyle = '#f2f2f2';
-    ctx.fillText(textString4, 700, canvas.height / 2 - 150);
+    ctx.fillText(textString5, 700, canvas.height / 2 - 150);
     //create a circular "mask"
     ctx.beginPath();
     ctx.arc(315, canvas.height / 2, 250, 0, Math.PI * 2, true);//position of img
