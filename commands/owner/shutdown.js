@@ -17,9 +17,9 @@ module.exports = {
     try {
       let evaled = eval('process.exit()');
 
-      if (typeof evaled !== "string")
+      if (typeof evaled !== "string") {
         evaled = require("util").inspect(evaled);
-
+      }
 
     } catch (err) {
       client.logger.error(err)
