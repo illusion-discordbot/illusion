@@ -32,7 +32,7 @@ module.exports = async (client) => {
   passport.use(new Strategy({
     clientID: process.env.DASHBOARD_ID,
     clientSecret: process.env.DASHBOARD_CLIENTSECRET,
-    callbackURL: `${process.env.DASHBOARD_DOMAIN}${process.env.DASHBOARD_PORT == 80 ? "" : `:${process.env.DASHBOARD_PORT}`}/callback`,
+    callbackURL: `${process.env.DASHBOARD_DOMAIN}${process.env.DASHBOARD_PORT === 80 ? "" : `:${process.env.DASHBOARD_PORT}`}/callback`,
     scope: ["identify", "guilds"]
   },
   (accessToken, refreshToken, profile, done) => { // eslint-disable-line no-unused-vars
