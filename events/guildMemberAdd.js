@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const mongoose = require('mongoose');
 const Guild = require('../models/guild');
 const Canvas = require('canvas');
 
