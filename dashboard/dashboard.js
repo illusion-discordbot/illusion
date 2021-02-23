@@ -68,6 +68,7 @@ module.exports = async (client) => {
   app.use('/assets', express.static(assetsDir))
 
   app.use((req, res, next) => {
+    let discUser
     if (!req.user) {discUser = ""}
     if (req.user) {discUser = `(${req.user.username}#${req.user.discriminator} / ${req.user.id}) `}
     client.logger.cmd(`[DASHBOARD] ${req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for'] || req.socket.remoteAddress} ${discUser}made ${req.method} request to ${req.url}.`);
