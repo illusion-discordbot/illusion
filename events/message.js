@@ -5,6 +5,7 @@ const Guild = require('../models/guild');
 const axios = require('axios');
 
 module.exports = async (client, message) => {
+	let prefix
 if(message.channel.type === 'text') {
 	var settings = await Guild.findOne({ guildID: message.guild.id });
   	if (!settings) {
