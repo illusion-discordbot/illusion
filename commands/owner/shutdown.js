@@ -21,8 +21,7 @@ module.exports = {
 				if (typeof evaled !== 'string') {
 					evaled = require('util').inspect(evaled)
 				}
-			}
-			catch (err) {
+			} catch (err) {
 				client.logger.error(err)
 			}
 		}, 750)

@@ -165,7 +165,7 @@ module.exports = async (client) => {
 	)
 
 	// Logout endpoint.
-	app.get('/logout', function(req, res) {
+	app.get('/logout', function (req, res) {
 		// We destroy the session.
 		req.session.destroy(() => {
 			// We logout the user.
@@ -192,7 +192,8 @@ module.exports = async (client) => {
 		if (!guild) return res.redirect('/dashboard')
 		const member = guild.members.cache.get(req.user.id)
 		if (!member) return res.redirect('/dashboard')
-		if (!member.permissions.has('MANAGE_GUILD')) return res.redirect('/dashboard')
+		if (!member.permissions.has('MANAGE_GUILD'))
+			return res.redirect('/dashboard')
 
 		// We retrive the settings stored for this guild.
 		let settings = await Guild.findOne({ guildID: guild.id })
@@ -221,7 +222,8 @@ module.exports = async (client) => {
 		if (!guild) return res.redirect('/dashboard')
 		const member = guild.members.cache.get(req.user.id)
 		if (!member) return res.redirect('/dashboard')
-		if (!member.permissions.has('MANAGE_GUILD')) return res.redirect('/dashboard')
+		if (!member.permissions.has('MANAGE_GUILD'))
+			return res.redirect('/dashboard')
 		// We retrive the settings stored for this guild.
 		let settings = await Guild.findOne({ guildID: guild.id })
 		if (!settings) {

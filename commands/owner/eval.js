@@ -2,8 +2,8 @@ const Discord = require('discord.js')
 const clean = (text) => {
 	return typeof text === 'string'
 		? text
-			.replace(/`/g, '`' + String.fromCharCode(8203))
-			.replace(/@/g, '@' + String.fromCharCode(8203))
+				.replace(/`/g, '`' + String.fromCharCode(8203))
+				.replace(/@/g, '@' + String.fromCharCode(8203))
 		: text
 }
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
 		) {
 			return message.reply(
 				new Discord.MessageEmbed()
-					.setTitle('You don\'t have permission to run this command')
+					.setTitle("You don't have permission to run this command")
 					.setColor(process.env.EMBED_COLOR)
 					.setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
 			)
@@ -36,8 +36,7 @@ module.exports = {
 			}
 
 			message.channel.send(clean(evaled), { code: 'xl' })
-		}
-		catch (err) {
+		} catch (err) {
 			message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``)
 		}
 	},

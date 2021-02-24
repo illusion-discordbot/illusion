@@ -36,7 +36,8 @@ module.exports = async (client, message) => {
 	if (message.attachments) {
 		for (const attachment of message.attachments.values()) {
 			const data = await axios.get(attachment.url)
-			if (!contentTypes.some((type) => data.headers['content-type'] === type)) continue
+			if (!contentTypes.some((type) => data.headers['content-type'] === type))
+				continue
 
 			try {
 				const haste = await axios.post(
@@ -87,7 +88,7 @@ module.exports = async (client, message) => {
 	if (command.guildOnly && message.channel.type === 'dm') {
 		return message.reply(
 			new Discord.MessageEmbed()
-				.setTitle('I can\'t execute that command inside DMs!')
+				.setTitle("I can't execute that command inside DMs!")
 				.setColor(process.env.EMBED_COLOR)
 				.setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
 		)
@@ -101,7 +102,7 @@ module.exports = async (client, message) => {
 	) {
 		return message.reply(
 			new Discord.MessageEmbed()
-				.setTitle('You don\'t have permission to run this command')
+				.setTitle("You don't have permission to run this command")
 				.setColor(process.env.EMBED_ERROR_COLOR)
 				.setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
 		)

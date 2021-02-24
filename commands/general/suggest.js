@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const Guild = require('../../models/guild')
 module.exports = {
 	name: 'suggest',
-	description: 'Send Suggestions to your server\'s suggestion channel!',
+	description: "Send Suggestions to your server's suggestion channel!",
 	category: 'general',
 	cooldown: 5,
 	guildOnly: true,

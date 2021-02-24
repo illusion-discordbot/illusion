@@ -23,7 +23,7 @@ module.exports = {
 				)
 				message.delete()
 			})
-			.catch(function(error) {
+			.catch(function (error) {
 				client.logger.error(error)
 			})
 	},
