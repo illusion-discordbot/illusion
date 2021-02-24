@@ -21,8 +21,8 @@ module.exports = {
 		if (!message.mentions.members.first().kickable) {
 			return message.reply(
 				new Discord.MessageEmbed()
-					.setTitle(`I can't kick this member!`)
-					.setDescription(`Make Sure I have permissions to kick this member.`)
+					.setTitle("I can't kick this member!")
+					.setDescription('Make Sure I have permissions to kick this member.')
 					.setColor(process.env.EMBED_ERROR_COLOR)
 					.setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
 			)
@@ -44,8 +44,8 @@ module.exports = {
 					.setColor(process.env.EMBED_COLOR)
 					.setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
 			)
-			.catch((_err) =>
-				message.channel.send(`I was unable to message this member!`)
+			.catch((err) =>
+				message.channel.send('I was unable to message this member!')
 			)
 
 		setTimeout(() => {

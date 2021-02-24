@@ -12,7 +12,7 @@ module.exports = {
 		if (!message.mentions.members.first()) {
 			return message.reply(
 				new Discord.MessageEmbed()
-					.setTitle(`You need to mention someone!`)
+					.setTitle('You need to mention someone!')
 					.setColor(process.env.EMBED_ERROR_COLOR)
 					.setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
 			)
@@ -21,8 +21,8 @@ module.exports = {
 		if (!message.mentions.members.first().bannable) {
 			return message.reply(
 				new Discord.MessageEmbed()
-					.setTitle(`I can't ban this member!`)
-					.setDescription(`Make Sure I have permissions to ban this member.`)
+					.setTitle("I can't ban this member!")
+					.setDescription('Make Sure I have permissions to ban this member.')
 					.setColor(process.env.EMBED_ERROR_COLOR)
 					.setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
 			)
