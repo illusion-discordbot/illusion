@@ -29,12 +29,18 @@ module.exports = async (client) => {
 	 *  - Identify: Avatar's url, username and discriminator.
 	 *  - Guilds: A list of partial guilds.
 	 */
+	let discordCallbackURL = ''
+	if (process.env.DASHBOARD_REVERSE_PROXY === 'true') {
+		discordCallbackURL = `${process.env.DASHBOARD_DOMAIN}/callback`
+	} else {
+		discordCallbackURL = `${process.env.DASHBOARD_DOMAIN}:${process.env.DASHBOARD_PORT}/callback`
+	}
 	passport.use(
 		new Strategy(
 			{
 				clientID: process.env.DASHBOARD_ID,
 				clientSecret: process.env.DASHBOARD_CLIENTSECRET,
-				callbackURL: `${process.env.DASHBOARD_DOMAIN}/callback`,
+				callbackURL: discordCallbackURL,
 				scope: ['identify', 'guilds'],
 			},
 			(accessToken, refreshToken, profile, done) => {
@@ -253,9 +259,9 @@ module.exports = async (client) => {
       renderTemplate(res, req, "404.ejs");
     })*/
 
-	app.listen('6969', null, null, () =>
+	app.listen(process.env.DASHBOARD_PORT, null, null, () =>
 		client.logger.log(
-			`Dashboard is up and running on port 6969.`
+			`Dashboard is up and running on port ${process.env.DASHBOARD_PORT}.`
 		)
 	)
 }
