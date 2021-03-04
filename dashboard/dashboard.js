@@ -34,11 +34,7 @@ module.exports = async (client) => {
 			{
 				clientID: process.env.DASHBOARD_ID,
 				clientSecret: process.env.DASHBOARD_CLIENTSECRET,
-				callbackURL: `${process.env.DASHBOARD_DOMAIN}${
-					process.env.DASHBOARD_PORT === 80
-						? ''
-						: `:${process.env.DASHBOARD_PORT}`
-				}/callback`,
+				callbackURL: `${process.env.DASHBOARD_DOMAIN}/callback`,
 				scope: ['identify', 'guilds'],
 			},
 			(accessToken, refreshToken, profile, done) => {
@@ -257,9 +253,9 @@ module.exports = async (client) => {
       renderTemplate(res, req, "404.ejs");
     })*/
 
-	app.listen(process.env.DASHBOARD_PORT, null, null, () =>
+	app.listen('6969', null, null, () =>
 		client.logger.log(
-			`Dashboard is up and running on port ${process.env.DASHBOARD_PORT}.`
+			`Dashboard is up and running on port 6969.`
 		)
 	)
 }
