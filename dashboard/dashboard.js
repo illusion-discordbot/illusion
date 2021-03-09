@@ -5,7 +5,6 @@ const passport = require('passport')
 const session = require('express-session')
 const Strategy = require('passport-discord').Strategy
 const ejs = require('ejs')
-const bodyParser = require('body-parser')
 const Discord = require('discord.js')
 const mongoose = require('mongoose')
 const Guild = require('../models/guild')
@@ -74,9 +73,9 @@ module.exports = async (client) => {
 	app.set('view engine', 'html')
 
 	// We initialize body-parser middleware to be able to read forms.
-	app.use(bodyParser.json())
+	app.use(express.json())
 	app.use(
-		bodyParser.urlencoded({
+		express.urlencoded({
 			extended: true,
 		})
 	)
