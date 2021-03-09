@@ -254,9 +254,9 @@ module.exports = async (client) => {
 			alert: 'Your settings have been saved.',
 		})
 	})
-	/* app.get("*", (req, res) => {
-      renderTemplate(res, req, "404.ejs");
-    })*/
+	 app.get("*", (req, res) => {
+      renderTemplate(res, req, "404.ejs")
+    })
 
 	app.listen(process.env.DASHBOARD_PORT, null, null, () =>
 		client.logger.log(
