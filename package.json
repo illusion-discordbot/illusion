@@ -6,7 +6,8 @@
 	"private": true,
 	"scripts": {
 		"start": "node .",
-		"lint": "eslint ."
+		"lint": "eslint .",
+		"nodemon": "npx nodemon -e ejs,css,map,eot,ttf,woff,woff2,png,js,json"
 	},
 	"author": "Illusion Developers",
 	"contributors": [
