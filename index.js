@@ -1,9 +1,21 @@
 const Discord = require('discord.js')
 const fs = require('fs')
+const chalk = require('chalk')
 require('dotenv').config()
-
 const client = new Discord.Client()
+const packageJson = fs.readFileSync('./package.json')
+const version = 'v' + JSON.parse(packageJson).version || 0
 client.logger = require('./modules/Logger')
+client.logger.blank('')
+client.logger.info('Starting...')
+client.logger.blank('')
+client.logger.blank(chalk.magentaBright('	.__.__  .__               .__               '))
+client.logger.blank(chalk.magentaBright('	|__|  | |  |  __ __  _____|__| ____   ____  '))
+client.logger.blank(chalk.magentaBright('	|  |  | |  | |  |  \\/  ___/  |/  _ \\ /    \\ '))
+client.logger.blank(chalk.magentaBright('	|  |  |_|  |_|  |  /\\___ \\|  (  <_> )   |  \\'))
+client.logger.blank(chalk.magentaBright('	|__|____/____/____//____  >__|\\____/|___|  /'))
+client.logger.blank(chalk.magentaBright('	                        \\/     ') + version + chalk.magentaBright('    \\/ '))
+client.logger.blank('')
 client.on('warn', (m) =>
 	client.logger.log(
 		`A warn event was sent by Discord.js: \n${JSON.stringify(m)}`,
@@ -54,6 +66,5 @@ fs.readdir('./events/', (err, files) => {
 	})
 	client.logger.log(`Loading ${files.length} events.`)
 })
-
 client.mongoose.init()
 client.login(process.env.TOKEN)
