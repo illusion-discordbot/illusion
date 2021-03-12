@@ -90,6 +90,34 @@ exports.log = (content, type = 'log') => {
 				`${timestamp} ${chalk.black.bgGreen(type.toUpperCase())} ${content}`
 			)
 		}
+		case 'info': {
+			fs.appendFile(
+				'log.txt',
+				`${timestamp} [${type.toUpperCase()}] ${content}\n`,
+				(err) => {
+					if (err) {
+						console.log(err)
+					}
+				}
+			)
+			return console.log(
+				`${timestamp} ${chalk.black.bgGreen(type.toUpperCase())} ${content}`
+			)
+		}
+		case 'blank': {
+			fs.appendFile(
+				'log.txt',
+				`${timestamp} ${content}\n`,
+				(err) => {
+					if (err) {
+						console.log(err)
+					}
+				}
+			)
+			return console.log(
+				`${timestamp} ${content}`
+			)
+		}
 		default:
 			throw new TypeError(
 				'Logger type must be either warn, debug, log, ready, cmd or error.'
@@ -104,3 +132,7 @@ exports.warn = (...args) => this.log(...args, 'warn')
 exports.debug = (...args) => this.log(...args, 'debug')
 
 exports.cmd = (...args) => this.log(...args, 'cmd')
+
+exports.blank = (...args) => this.log(...args, 'blank')
+
+exports.info = (...args) => this.log(...args, 'info')
