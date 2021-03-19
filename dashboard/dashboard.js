@@ -189,14 +189,14 @@ module.exports = async (client) => {
 	// Settings endpoint.
 	app.get('/dashboard/:guildID', checkAuth, async (req, res) => {
 		// We validate the request, check if guild exists, member is in guild and if member has minimum permissions, if not, we redirect it back.
-		const guild = client.guilds.cache.get(req.params.guildID)
+		const guild = await client.guilds.cache.get(req.params.guildID)
 		if (!guild) return res.redirect('/dashboard')
-		const member = guild.members.cache.get(req.user.id)
+		const member = await guild.members.fetch(req.user.id)
 		if (!member) return res.redirect('/dashboard')
-		if (!member.permissions.has('MANAGE_GUILD'))
+		if (!member.permissions.has('MANAGE_GUILD')) {
 			return res.redirect('/dashboard')
-
-		// We retrive the settings stored for this guild.
+		}
+		// We retrieve the settings stored for this guild.
 		let settings = await Guild.findOne({ guildID: guild.id })
 		if (!settings) {
 			const newSettings = new Guild({
@@ -208,7 +208,6 @@ module.exports = async (client) => {
 			await newSettings.save().catch(() => {})
 			settings = await Guild.findOne({ guildID: guild.id })
 		}
-
 		renderTemplate(res, req, 'settings.ejs', {
 			guild,
 			settings: settings,
