@@ -25,8 +25,17 @@
                 <a class="btn btn-primary btn-sm" href="/dashboard/<%= guild.id %>">Edit Settings</a>
             </td>
             <% } else { %>
+              <%
+              let discordCallbackURL = ""
+              if (process.env.DASHBOARD_REVERSE_PROXY === 'true') {
+                discordCallbackURL = `${process.env.DASHBOARD_DOMAIN}`
+              } else {
+                discordCallbackURL = `${process.env.DASHBOARD_DOMAIN}:${process.env.DASHBOARD_PORT}`
+              }
+              console.log(discordCallbackURL)
+              %>
             <td class="td-actions text-right">
-              <a class="btn btn-default btn-sm" href="<%= `https://discordapp.com/oauth2/authorize?client_id=${bot.user.id}&scope=bot&guild_id=${guild.id}&response_type=code&redirect_uri=${encodeURIComponent(`${process.env.DASHBOARD_DOMAIN}${process.env.DASHBOARD_PORT == 80 ? "" : `:${process.env.DASHBOARD_PORT}`}/callback`)}` %>">Add Bot</a>
+              <a class="btn btn-default btn-sm" href="<%= `https://discordapp.com/oauth2/authorize?client_id=${bot.user.id}&scope=bot&guild_id=${guild.id}&response_type=code&redirect_uri=${encodeURIComponent(`${discordCallbackURL}/callback`)}` %>">Add Bot</a>
             </td>
             <% } %>
         </tr>
