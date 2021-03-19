@@ -22,7 +22,7 @@ module.exports = {
 			return message.channel.send(
 				new Discord.MessageEmbed()
 					.setTitle('Error')
-					.setDescription('You need to set a Suggestion Channel first!')
+					.setDescription('You need to set a Suggestion Channel on https://illusionbot.xyz/dashboard first!')
 					.setColor(process.env.EMBED_ERROR_COLOR)
 					.setFooter(process.env.EMBED_FOOTER, process.env.EMBED_FOOTER_IMAGE)
 			)
