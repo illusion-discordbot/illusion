@@ -32,6 +32,12 @@ module.exports = {
 				if (command.category !== 'utility') return
 				help.push(`\`${command.name}\`,`)
 			})
+			help.push('\n**Fun Commands:**\n')
+			commands.forEach((command) => {
+				if (command.category === 'owner') return
+				if (command.category !== 'fun') return
+				help.push(`\`${command.name}\`,`)
+			})
 
 			return message.reply(
 				new Discord.MessageEmbed()
